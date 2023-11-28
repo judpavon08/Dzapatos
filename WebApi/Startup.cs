@@ -58,6 +58,8 @@ namespace WebApi
             services.AddScoped<IProveedorRepository, ProveedorRepository>();
             services.AddScoped<IBodegaService, BodegaService>();
             services.AddScoped<IBodegaRepository, BodegaRepository>();
+            services.AddScoped<ICategoriaService, CategoriaService>();
+            services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddInfrastructureServices();
         }
     }
