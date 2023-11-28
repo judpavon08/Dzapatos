@@ -20,8 +20,7 @@ namespace Domain.Endpoint.Services
         public async Task<Color> CreateAsync(CreateColorDTO colorDTO)
         {
             Color color = new Color
-            {
-                ID_COLOR = colorDTO.ID_COLOR,
+            {                
                 NOMBRE_COLOR = colorDTO.NOMBRE_COLOR,
             };
             await colorRepository.CreateAsync(color);

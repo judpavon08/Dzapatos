@@ -81,6 +81,7 @@
     <Compile Include="Data\Interfaces\ISqlCommandOperationBuilder.cs" />
     <Compile Include="Data\Interfaces\ISqlEntitySettingsBuilder.cs" />
     <Compile Include="Data\ISqlDbConnection.cs" />
+    <Compile Include="Data\Repositories\BodegaRepository.cs" />
     <Compile Include="Data\Repositories\ColorRepository.cs" />
     <Compile Include="Data\Repositories\GenericRepository.cs" />
     <Compile Include="Data\Repositories\IGenericRepository.cs" />

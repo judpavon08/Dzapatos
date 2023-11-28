@@ -36,6 +36,7 @@ namespace Infrastructure.Endpoint.Data.Services
             SqlEntitySettings materialSettings = BuildMaterialSettings();
             SqlEntitySettings productoSettings = BuildProductoSettings();
             SqlEntitySettings proveedorSettings = BuildProveedorSettings();
+            SqlEntitySettings bodegaSettings = BuildBodegaSettings();
 
 
             entities.Add(typeof(Tallas), tallasSettings);
@@ -44,6 +45,7 @@ namespace Infrastructure.Endpoint.Data.Services
             entities.Add(typeof(Material), materialSettings);
             entities.Add(typeof(Producto), productoSettings);
             entities.Add(typeof(Proveedor), proveedorSettings);
+            entities.Add(typeof(Bodega), bodegaSettings);
 
             // Imprimir el diccionario después de construirlo
             foreach (var entity in entities)
@@ -251,6 +253,35 @@ namespace Infrastructure.Endpoint.Data.Services
                    .WithSqlDbType(SqlDbType.Bit) // Tipo de datos en la base de datos
                    .AddProperty();
 
+                // Puedes seguir agregando más propiedades si es necesario.
+            }).Build();
+        }
+
+        private SqlEntitySettings BuildBodegaSettings()
+        {
+            return builder.Entity<Bodega>(entity =>
+            {
+                entity.Table("Bodega"); // Nombre de la tabla en la base de datos para Tallas
+                entity.Property(property => property.ID_BODEGA)
+                    .SetDefaultName("ID_BODEGA") // Nombre de la columna en la base de datos para ID_TALLA
+                    .WithSqlDbType(SqlDbType.Int) // Tipo de datos en la base de datos
+                    .AsPrimaryKey()  // Asegúrate de marcar la columna como clave primaria
+                    .AddProperty();
+
+                entity.Property(property => property.NOMBRE_BODEGA)
+                    .SetDefaultName("NOMBRE_BODEGA") // Nombre de la columna en la base de datos
+                    .WithSqlDbType(SqlDbType.NVarChar) // Tipo de datos en la base de datos
+                    .AddProperty();
+
+                entity.Property(property => property.ID_PRODUCTO)
+                   .SetDefaultName("ID_PRODUCTO") // Nombre de la columna en la base de datos
+                   .WithSqlDbType(SqlDbType.Int) // Tipo de datos en la base de datos
+                   .AddProperty();
+
+                entity.Property(property => property.DIRECCION)
+                   .SetDefaultName("DIRECCION") // Nombre de la columna en la base de datos
+                   .WithSqlDbType(SqlDbType.NVarChar) // Tipo de datos en la base de datos
+                   .AddProperty();                
                 // Puedes seguir agregando más propiedades si es necesario.
             }).Build();
         }
