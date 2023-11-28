@@ -52,6 +52,8 @@ namespace WebApi
             services.AddScoped<IColorService, ColorService>();
             services.AddScoped<IMaterialRepository, MaterialRepository>();
             services.AddScoped<IMaterialService, MaterialService>();
+            services.AddScoped<IProductoService, ProductoService>();
+            services.AddScoped<IProductoRepository, ProductoRepository>();
 
             services.AddInfrastructureServices();
         }

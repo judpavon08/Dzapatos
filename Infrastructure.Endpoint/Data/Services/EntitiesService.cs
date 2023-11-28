@@ -23,7 +23,7 @@ namespace Infrastructure.Endpoint.Data.Services
         public SqlEntitySettings GetSettings<T>() where T : BaseEntity
         {
             //if (typeof(ToDo).Equals(typeof(T))) return BuildToDoSettings();
-            if (!entities.ContainsKey(typeof(T))) throw new ArgumentOutOfRangeException(nameof(T), "Not Mapped Entity");
+            if (!entities.ContainsKey(typeof(T))) throw new ArgumentOutOfRangeException(nameof(T), "Entidad no mapeada");
 
             return entities[typeof(T)];
         }
@@ -34,11 +34,13 @@ namespace Infrastructure.Endpoint.Data.Services
             SqlEntitySettings marcaSettings = BuildMarcaSettings();
             SqlEntitySettings colorSettings = BuildColorSettings();
             SqlEntitySettings materialSettings = BuildMaterialSettings();
+            SqlEntitySettings productoSettings = BuildProductoSettings();
 
             entities.Add(typeof(Tallas), tallasSettings);
             entities.Add(typeof(Marca), marcaSettings);
             entities.Add(typeof(Color), colorSettings);
             entities.Add(typeof(Material), materialSettings);
+            entities.Add(typeof(Producto), productoSettings);
 
             // Imprimir el diccionario después de construirlo
             foreach (var entity in entities)
@@ -140,6 +142,73 @@ namespace Infrastructure.Endpoint.Data.Services
                 // Puedes seguir agregando más propiedades si es necesario.
             }).Build();
         }
+
+        private SqlEntitySettings BuildProductoSettings()
+        {
+            return builder.Entity<Producto>(entity =>
+            {
+                entity.Table("Producto"); // Nombre de la tabla en la base de datos para Tallas
+
+                entity.Property(property => property.ID_PRODUCTO)
+                    .SetDefaultName("ID_PRODUCTO")
+                    .WithSqlDbType(SqlDbType.Int)
+                    .AsPrimaryKey()
+                    .AddProperty();
+
+                entity.Property(property => property.descripcion)
+                    .SetDefaultName("descripcion")
+                    .WithSqlDbType(SqlDbType.VarChar)
+                    .AddProperty();
+
+                entity.Property(property => property.NOMBRE_PRODUCTO)
+                    .SetDefaultName("NOMBRE_PRODUCTO")
+                    .WithSqlDbType(SqlDbType.VarChar)
+                    .AddProperty();
+
+                entity.Property(property => property.ID_COLOR)
+                    .SetDefaultName("ID_COLOR")
+                    .WithSqlDbType(SqlDbType.Int)
+                    .AddProperty();
+
+                entity.Property(property => property.EXISTENCIA)
+                    .SetDefaultName("EXISTENCIA")
+                    .WithSqlDbType(SqlDbType.VarChar)
+                    .AddProperty();
+
+                entity.Property(property => property.ID_MARCA)
+                    .SetDefaultName("ID_MARCA")
+                    .WithSqlDbType(SqlDbType.Int)
+                    .AddProperty();
+
+                entity.Property(property => property.ID_MATERIAL)
+                    .SetDefaultName("ID_MATERIAL")
+                    .WithSqlDbType(SqlDbType.Int)
+                    .AddProperty();
+
+                entity.Property(property => property.ID_CATEGORIA)
+                    .SetDefaultName("ID_CATEGORIA")
+                    .WithSqlDbType(SqlDbType.Int)
+                    .AddProperty();
+
+                entity.Property(property => property.ID_BODEGA)
+                    .SetDefaultName("ID_BODEGA")
+                    .WithSqlDbType(SqlDbType.Int)
+                    .AddProperty();
+
+                entity.Property(property => property.ID_TALLA)
+                    .SetDefaultName("ID_TALLA")
+                    .WithSqlDbType(SqlDbType.Int)
+                    .AddProperty();
+
+                entity.Property(property => property.Estado)
+                    .SetDefaultName("Estado")
+                    .WithSqlDbType(SqlDbType.Bit)
+                    .AddProperty();
+
+                // Puedes seguir agregando más propiedades si es necesario.
+            }).Build();
+        }
+
 
     }
 }

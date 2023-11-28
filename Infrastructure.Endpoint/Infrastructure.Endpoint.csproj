@@ -86,6 +86,7 @@
     <Compile Include="Data\Repositories\IGenericRepository.cs" />
     <Compile Include="Data\Repositories\MarcaRepository.cs" />
     <Compile Include="Data\Repositories\MaterialRepository.cs" />
+    <Compile Include="Data\Repositories\ProductoRepository.cs" />
     <Compile Include="Data\Repositories\TallaRepository.cs" />
     <Compile Include="Data\Services\EntitiesService.cs" />
     <Compile Include="Data\Interfaces\IEntitiesService.cs" />
