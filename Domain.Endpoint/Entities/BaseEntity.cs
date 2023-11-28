@@ -4,7 +4,7 @@ namespace Domain.Endpoint.Entities
 {
     public class BaseEntity
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         
     }
 }

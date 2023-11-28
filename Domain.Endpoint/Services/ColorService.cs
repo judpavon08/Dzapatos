@@ -21,28 +21,27 @@ namespace Domain.Endpoint.Services
         {
             Color color = new Color
             {
-                ID_COLOR = colorDTO.ID_COLOR,                
-                NOMBRE_COLOR = colorDTO.NOMBRE_COLOR
+                ID_COLOR = colorDTO.ID_COLOR,
+                NOMBRE_COLOR = colorDTO.NOMBRE_COLOR,
             };
             await colorRepository.CreateAsync(color);
 
             return color;
         }
-        
 
         public async Task DeleteAsync(int id)
         {
-            // Get the existing Color from the repository
+            // Get the existing Marca from the repository
             Color dbColor = await GetByIdAsync(id);
 
-            // Check if the Color exists
+            // Check if the Marca exists
             if (dbColor == null)
             {
-                // Handle the case where the Color with the given id is not found
-                throw new InvalidOperationException($"Color con ID {id} no fue encontrado.");
+                // Handle the case where the Marca with the given id is not found
+                throw new InvalidOperationException($"Color con ID {id} no encontrado.");
             }
 
-            // Call the repository to delete the Color
+            // Call the repository to delete the Marca
             await colorRepository.DeleteAsync(dbColor);
         }
 
@@ -67,12 +66,13 @@ namespace Domain.Endpoint.Services
             if (dbColor == null)
             {
                 // Handle the case where the Marca with the given id is not found
-                throw new InvalidOperationException($"Co with ID {id} not found.");
+                throw new InvalidOperationException($"Color con ID {id} no encontrado.");
             }
 
             // Update the properties of the existing Marca with the values from DTO
+            dbColor.ID_COLOR = colorDTO.ID_COLOR;
             dbColor.NOMBRE_COLOR = colorDTO.NOMBRE_COLOR;
-
+           
             // Call the repository to update the Marca
             await colorRepository.UpdateAsync(dbColor);
 
