@@ -35,12 +35,15 @@ namespace Infrastructure.Endpoint.Data.Services
             SqlEntitySettings colorSettings = BuildColorSettings();
             SqlEntitySettings materialSettings = BuildMaterialSettings();
             SqlEntitySettings productoSettings = BuildProductoSettings();
+            SqlEntitySettings proveedorSettings = BuildProveedorSettings();
+
 
             entities.Add(typeof(Tallas), tallasSettings);
             entities.Add(typeof(Marca), marcaSettings);
             entities.Add(typeof(Color), colorSettings);
             entities.Add(typeof(Material), materialSettings);
             entities.Add(typeof(Producto), productoSettings);
+            entities.Add(typeof(Proveedor), proveedorSettings);
 
             // Imprimir el diccionario después de construirlo
             foreach (var entity in entities)
@@ -208,7 +211,49 @@ namespace Infrastructure.Endpoint.Data.Services
                 // Puedes seguir agregando más propiedades si es necesario.
             }).Build();
         }
+        private SqlEntitySettings BuildProveedorSettings()
+        {
+            return builder.Entity<Proveedor>(entity =>
+            {
+                entity.Table("Proveedor"); // Nombre de la tabla en la base de datos para Tallas
+                entity.Property(property => property.ID_PROVEEDOR)
+                    .SetDefaultName("ID_PROVEEDOR") // Nombre de la columna en la base de datos para ID_TALLA
+                    .WithSqlDbType(SqlDbType.Int) // Tipo de datos en la base de datos
+                    .AsPrimaryKey()  // Asegúrate de marcar la columna como clave primaria
+                    .AddProperty();
+                entity.Property(property => property.CIUDAD_PROVEEDOR)
+                    .SetDefaultName("CIUDAD_PROVEEDOR") // Nombre de la columna en la base de datos
+                    .WithSqlDbType(SqlDbType.NVarChar) // Tipo de datos en la base de datos
+                    .AddProperty();
 
+                entity.Property(property => property.CORREO_ELECTRONICO)
+                   .SetDefaultName("CORREO_ELECTRONICO") // Nombre de la columna en la base de datos
+                   .WithSqlDbType(SqlDbType.NVarChar) // Tipo de datos en la base de datos
+                   .AddProperty();
+
+                entity.Property(property => property.NOMBRE_CONTACTO)
+                   .SetDefaultName("NOMBRE_CONTACTO") // Nombre de la columna en la base de datos
+                   .WithSqlDbType(SqlDbType.NVarChar) // Tipo de datos en la base de datos
+                   .AddProperty();
+
+                entity.Property(property => property.id_fac_compra)
+                     .SetDefaultName("id_fac_compra")
+                     .WithSqlDbType(SqlDbType.Int)
+                     .AddProperty();
+
+                entity.Property(property => property.NOMBRE_EMPRESA)
+                   .SetDefaultName("NOMBRE_EMPRESA") // Nombre de la columna en la base de datos
+                   .WithSqlDbType(SqlDbType.NVarChar) // Tipo de datos en la base de datos
+                   .AddProperty();
+
+                entity.Property(property => property.Estado)
+                   .SetDefaultName("Estado") // Nombre de la columna en la base de datos para ID_TALLA
+                   .WithSqlDbType(SqlDbType.Bit) // Tipo de datos en la base de datos
+                   .AddProperty();
+
+                // Puedes seguir agregando más propiedades si es necesario.
+            }).Build();
+        }
 
     }
 }
