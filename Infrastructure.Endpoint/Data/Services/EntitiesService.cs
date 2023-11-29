@@ -38,6 +38,7 @@ namespace Infrastructure.Endpoint.Data.Services
             SqlEntitySettings proveedorSettings = BuildProveedorSettings();
             SqlEntitySettings bodegaSettings = BuildBodegaSettings();
             SqlEntitySettings categoriaSettings = BuildCategoriaSettings();
+            SqlEntitySettings tablaUsuarioSettings = BuildTablaUsuarioSettings();
 
 
             entities.Add(typeof(Tallas), tallasSettings);
@@ -48,6 +49,7 @@ namespace Infrastructure.Endpoint.Data.Services
             entities.Add(typeof(Proveedor), proveedorSettings);
             entities.Add(typeof(Bodega), bodegaSettings);
             entities.Add(typeof(Categoria), categoriaSettings);
+            entities.Add(typeof(TablaUsuario), tablaUsuarioSettings);
 
             // Imprimir el diccionario después de construirlo
             foreach (var entity in entities)
@@ -321,6 +323,45 @@ namespace Infrastructure.Endpoint.Data.Services
 
                 entity.Property(property => property.FechaIngreso)
                    .SetDefaultName("FechaIngreso") // Nombre de la columna en la base de datos
+                   .WithSqlDbType(SqlDbType.DateTime) // Tipo de datos en la base de datos
+                   .AddProperty();
+                // Puedes seguir agregando más propiedades si es necesario.
+            }).Build();
+        }
+
+        private SqlEntitySettings BuildTablaUsuarioSettings()
+        {
+            return builder.Entity<TablaUsuario>(entity =>
+            {
+                entity.Table("Tabla_Usuario"); // Nombre de la tabla en la base de datos para Tallas
+                entity.Property(property => property.ID_USUARIO)
+                    .SetDefaultName("ID_USUARIO") // Nombre de la columna en la base de datos para ID_TALLA
+                    .WithSqlDbType(SqlDbType.Int) // Tipo de datos en la base de datos
+                    .AsPrimaryKey()  // Asegúrate de marcar la columna como clave primaria
+                    .AddProperty();
+
+                entity.Property(property => property.Nombre_Completo)
+                    .SetDefaultName("Nombre_Completo") // Nombre de la columna en la base de datos
+                    .WithSqlDbType(SqlDbType.VarChar) // Tipo de datos en la base de datos
+                    .AddProperty();
+
+                entity.Property(property => property.Correo)
+                   .SetDefaultName("Correo") // Nombre de la columna en la base de datos
+                   .WithSqlDbType(SqlDbType.VarChar) // Tipo de datos en la base de datos
+                   .AddProperty();
+
+                entity.Property(property => property.Telefono)
+                   .SetDefaultName("Telefono") // Nombre de la columna en la base de datos
+                   .WithSqlDbType(SqlDbType.NVarChar) // Tipo de datos en la base de datos
+                   .AddProperty();
+
+                entity.Property(property => property.Estado)
+                   .SetDefaultName("Estado") // Nombre de la columna en la base de datos
+                   .WithSqlDbType(SqlDbType.NVarChar) // Tipo de datos en la base de datos
+                   .AddProperty();
+
+                entity.Property(property => property.Fecha_Creacion)
+                   .SetDefaultName("Fecha_Creacion") // Nombre de la columna en la base de datos
                    .WithSqlDbType(SqlDbType.DateTime) // Tipo de datos en la base de datos
                    .AddProperty();
                 // Puedes seguir agregando más propiedades si es necesario.
