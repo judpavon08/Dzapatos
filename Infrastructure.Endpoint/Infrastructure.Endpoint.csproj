@@ -92,6 +92,7 @@
     <Compile Include="Data\Repositories\ProveedorRepository.cs" />
     <Compile Include="Data\Repositories\TablaUsuarioRepository.cs" />
     <Compile Include="Data\Repositories\TallaRepository.cs" />
+    <Compile Include="Data\Repositories\ToDosRepository.cs" />
     <Compile Include="Data\Services\EntitiesService.cs" />
     <Compile Include="Data\Interfaces\IEntitiesService.cs" />
     <Compile Include="Data\SqlDbConnection.cs" />

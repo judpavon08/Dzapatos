@@ -63,6 +63,7 @@
     <Compile Include="DTOs\ProveedorDTO.cs" />
     <Compile Include="DTOs\TablaUsuarioDTO.cs" />
     <Compile Include="DTOs\TallasDTO.cs" />
+    <Compile Include="DTOs\ToDoDto.cs" />
     <Compile Include="Entities\AuditableEntity.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Bodega.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Entities\Proveedor.cs" />
     <Compile Include="Entities\TablaUsuario.cs" />
     <Compile Include="Entities\Tallas.cs" />
+    <Compile Include="Entities\ToDo.cs" />
     <Compile Include="Interfaces\Repositories\IBodegaRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IColorRepository.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Interfaces\Repositories\IProveedorRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITablaUsuarioRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITallasRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IToDosRepositorys.cs" />
     <Compile Include="Interfaces\Services\IBodegaService.cs" />
     <Compile Include="Interfaces\Services\ICategoriaService.cs" />
     <Compile Include="Interfaces\Services\IColorService.cs" />
@@ -93,6 +96,7 @@
     <Compile Include="Interfaces\Services\IProveedorService.cs" />
     <Compile Include="Interfaces\Services\ITablaUsuarioService.cs" />
     <Compile Include="Interfaces\Services\ITallasService.cs" />
+    <Compile Include="Interfaces\Services\IToDosService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BodegaService.cs" />
     <Compile Include="Services\CategoriaService.cs" />
@@ -103,6 +107,7 @@
     <Compile Include="Services\ProveedorService.cs" />
     <Compile Include="Services\TablaUsuarioService.cs" />
     <Compile Include="Services\TallasService.cs" />
+    <Compile Include="Services\ToDosService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />
