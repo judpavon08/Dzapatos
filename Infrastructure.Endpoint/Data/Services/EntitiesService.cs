@@ -63,11 +63,7 @@ namespace Infrastructure.Endpoint.Data.Services
         {
             return builder.Entity<Tallas>(entity =>
             {
-                entity.Table("TALLA"); // Nombre de la tabla en la base de datos para Tallas
-                entity.Property(property => property.NUM_TALLA)
-                    .SetDefaultName("NUM_TALLA") // Nombre de la columna en la base de datos
-                    .WithSqlDbType(SqlDbType.VarChar) // Tipo de datos en la base de datos
-                    .AddProperty();
+                entity.Table("Talla"); // Nombre de la tabla en la base de datos para Tallas
 
                 entity.Property(property => property.ID_TALLA)
                     .SetDefaultName("ID_TALLA") // Nombre de la columna en la base de datos para ID_TALLA
@@ -75,6 +71,11 @@ namespace Infrastructure.Endpoint.Data.Services
                     .AsPrimaryKey()  // Asegúrate de marcar la columna como clave primaria
                     .AddProperty();
 
+                entity.Property(property => property.NUM_TALLA)
+                    .SetDefaultName("NUM_TALLA") // Nombre de la columna en la base de datos
+                    .WithSqlDbType(SqlDbType.VarChar) // Tipo de datos en la base de datos
+                    .AddProperty();
+               
                 // Puedes seguir agregando más propiedades si es necesario.
             }).Build();
         }
@@ -82,7 +83,13 @@ namespace Infrastructure.Endpoint.Data.Services
         {
             return builder.Entity<Material>(entity =>
             {
-                entity.Table("MATERIAL"); // Nombre de la tabla en la base de datos para Tallas
+                entity.Table("Material"); // Nombre de la tabla en la base de datos para Tallas
+                entity.Property(property => property.ID_MATERIAL)
+                   .SetDefaultName("ID_MATERIAL") // Nombre de la columna en la base de datos para ID_TALLA
+                   .WithSqlDbType(SqlDbType.VarChar) // Tipo de datos en la base de datos
+                   .AsPrimaryKey()  // Asegúrate de marcar la columna como clave primaria
+                   .AddProperty();
+
                 entity.Property(property => property.estado)
                     .SetDefaultName("estado") // Nombre de la columna en la base de datos
                     .WithSqlDbType(SqlDbType.Bit) // Tipo de datos en la base de datos
@@ -98,11 +105,7 @@ namespace Infrastructure.Endpoint.Data.Services
                    .WithSqlDbType(SqlDbType.VarChar) // Tipo de datos en la base de datos
                    .AddProperty();
 
-                entity.Property(property => property.ID_MATERIAL)
-                    .SetDefaultName("ID_MATERIAL") // Nombre de la columna en la base de datos para ID_TALLA
-                    .WithSqlDbType(SqlDbType.VarChar) // Tipo de datos en la base de datos
-                    .AsPrimaryKey()  // Asegúrate de marcar la columna como clave primaria
-                    .AddProperty();
+               
 
                 // Puedes seguir agregando más propiedades si es necesario.
             }).Build();
@@ -111,18 +114,19 @@ namespace Infrastructure.Endpoint.Data.Services
         {
             return builder.Entity<Color>(entity =>
             {
-                entity.Table("COLOR"); // Nombre de la tabla en la base de datos para Tallas
-                entity.Property(property => property.NOMBRE_COLOR)
-                    .SetDefaultName("NOMBRE_COLOR") // Nombre de la columna en la base de datos
-                    .WithSqlDbType(SqlDbType.NVarChar) // Tipo de datos en la base de datos
-                    .AddProperty();
-
+                entity.Table("Color"); // Nombre de la tabla en la base de datos para Tallas
                 entity.Property(property => property.ID_COLOR)
                      .SetDefaultName("ID_COLOR") // Nombre de la columna en la base de datos para ID_TALLA
                      .WithSqlDbType(SqlDbType.Int) // Tipo de datos en la base de datos
                      .AsPrimaryKey()  // Asegúrate de marcar la columna como clave primaria
                      .AddProperty();
 
+                
+                entity.Property(property => property.NOMBRE_COLOR)
+                    .SetDefaultName("NOMBRE_COLOR") // Nombre de la columna en la base de datos
+                    .WithSqlDbType(SqlDbType.NVarChar) // Tipo de datos en la base de datos
+                    .AddProperty();
+              
                 // Puedes seguir agregando más propiedades si es necesario.
             }).Build();
         }
@@ -131,7 +135,7 @@ namespace Infrastructure.Endpoint.Data.Services
         {
             return builder.Entity<Marca>(entity =>
             {
-                entity.Table("MARCA"); // Nombre de la tabla en la base de datos para Tallas
+                entity.Table("Marca"); // Nombre de la tabla en la base de datos para Tallas
                 entity.Property(property => property.NOMBRE_MARCA)
                     .SetDefaultName("NOMBRE_MARCA") // Nombre de la columna en la base de datos
                     .WithSqlDbType(SqlDbType.NVarChar) // Tipo de datos en la base de datos

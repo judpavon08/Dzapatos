@@ -35,7 +35,7 @@ namespace Infrastructure.Endpoint.Data.Repositories
             Color color = new Color
             {
                 ID_COLOR = sqlDbConnection.GetDataRowValue<int>(row, "ID_COLOR"),                
-                NOMBRE_COLOR = sqlDbConnection.GetDataRowValue<string>(row, "NOMBRE_COLOR"),
+                NOMBRE_COLOR = sqlDbConnection.GetDataRowValue<string>(row, "NOMBRE_COLOR")
                 // Agrega más propiedades de la entidad Color y mapea los valores desde el DataRow si es necesario.
             };
 

@@ -20,7 +20,8 @@ namespace Domain.Endpoint.Services
         public async Task<Color> CreateAsync(CreateColorDTO colorDTO)
         {
             Color color = new Color
-            {                
+            {   
+                ID_COLOR= colorDTO.ID_COLOR,
                 NOMBRE_COLOR = colorDTO.NOMBRE_COLOR,
             };
             await colorRepository.CreateAsync(color);
@@ -68,8 +69,7 @@ namespace Domain.Endpoint.Services
                 throw new InvalidOperationException($"Color con ID {id} no encontrado.");
             }
 
-            // Update the properties of the existing Marca with the values from DTO
-            dbColor.ID_COLOR = colorDTO.ID_COLOR;
+            // Update the properties of the existing Marca with the values from DTO   
             dbColor.NOMBRE_COLOR = colorDTO.NOMBRE_COLOR;
            
             // Call the repository to update the Marca
